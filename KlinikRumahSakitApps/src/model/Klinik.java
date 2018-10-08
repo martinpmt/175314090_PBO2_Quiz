@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,6 +48,12 @@ public class Klinik {
     }
 
     public void tambahDokter(Dokter dokter) {
-        daftarDokter.add(dokter);
+        RumahSakit a = new RumahSakit();
+        if (a.cariDokter(dokter.getNama()) == -1) {
+            a.tambahDokter(dokter);
+        } else {
+            JOptionPane.showMessageDialog(null, "Dokter " + dokter.getNama() + " Sudah Ada !");
+        }
+
     }
 }

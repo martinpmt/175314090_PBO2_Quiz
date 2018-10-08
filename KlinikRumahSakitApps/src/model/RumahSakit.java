@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +17,10 @@ public class RumahSakit {
     private String nama;
     private ArrayList<Dokter> daftarDokter = new ArrayList<Dokter>();
     private ArrayList<Klinik> daftarKLinik = new ArrayList<Klinik>();
+
+    public RumahSakit() {
+
+    }
 
     public RumahSakit(String nama) {
         this.nama = nama;
@@ -37,7 +42,7 @@ public class RumahSakit {
         if (cariDokter(dokter.getNama()) == -1) {
             daftarDokter.add(dokter);
         } else {
-            System.out.println(dokter.getNama() + " Sudah Tedaftar");
+            JOptionPane.showMessageDialog(null, "Dokter " + dokter.getNama() + " Sudah Ada !");
         }
     }
 
@@ -46,7 +51,11 @@ public class RumahSakit {
     }
 
     public void tambahKlinik(Klinik klinik) {
-        daftarKLinik.add(klinik);
+        if (cariKlinik(klinik.getNamaKlinik()) == -1) {
+            daftarKLinik.add(klinik);
+        } else {
+            JOptionPane.showMessageDialog(null, "Klinik " + klinik.getNamaKlinik() + " Sudah Ada !");
+        }
     }
 
     public void setDaftarKLinik(ArrayList<Klinik> daftarKLinik) {
